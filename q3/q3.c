@@ -28,9 +28,11 @@ char** find_frequent_words(const char* path, int32_t n) {
 
     // Read the file and count the occurrences of each word
     FILE* fp = fopen(path, "r");
-    char line[MAX_LINE_SIZE];
+
     // read one line from the text file
+    char line[MAX_LINE_SIZE];
     while (fgets(line, MAX_LINE_SIZE, fp)) {
+
         // Remove non-alphabetic characters from the line
         for (int i = 0; line[i]; i++) {
             if (!isalpha(line[i])) {
@@ -45,6 +47,13 @@ char** find_frequent_words(const char* path, int32_t n) {
             for (int i = 0; word[i]; i++) {
                 word[i] = tolower(word[i]);
             }
+
+            // // Skip one-character and two-charachter words
+            // if (strlen(word) <= 2)
+            // {
+            //     word = strtok(NULL, " \n");
+            //     continue;
+            // }
 
             // Find the word in the array of word counts
             // Reset the word index
